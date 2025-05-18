@@ -96,6 +96,12 @@ void _usageError(ArgParser parser, String message) {
   print("");
   print("Optional custom interpreter options:");
   print(parser.usage);
+  print("");
+  print("Available suites:");
+  for (var s in _allSuites.keys.toList()) {
+    print("\t- $s");
+  }
+  // print(_allSuites.keys.toList().join("\n\t"));
   exit(1);
 }
 
