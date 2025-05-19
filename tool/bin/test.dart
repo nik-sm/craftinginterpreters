@@ -142,6 +142,8 @@ bool _runSuite(String name) {
 
 void _runTest(String path) {
   if (path.contains("benchmark")) return;
+  // NOTE - can manually subset to a specific test here:
+  // if (!path.contains("test/operator/add_nil_nil.lox")) return;
 
   // Make a nice short path relative to the working directory. Normalize it to
   // use "/" since the interpreters expect the argument to use that.
@@ -322,6 +324,9 @@ class Test {
   }
 
   void _validateRuntimeError(List<String> errorLines) {
+    // NOTE that runtime error expects a format of roughly:
+    // <Error>
+    // <Stack trace>
     if (errorLines.length < 2) {
       fail("Expected runtime error '$_expectedRuntimeError' and got none.");
       return;
